@@ -1,0 +1,32 @@
+﻿学校领导 			1	getLeaderList()    			List<UserVO>
+
+其他部门领导			2	getDeptLeader(String deptId)    	List<UserVO>
+
+所在部门教职工			3	getWorkmateList(String userId)  	List<UserVO>
+
+所在二级部门领导		4	getDeptLeaderByUser(String userId)  	List<UserVO>		 getDeptLeader()  List<UserVO>
+
+各类教职工代表		5	getDelegateList(String userId)  	List<UserVO>	
+
+所在二级学院班级的班主任	6	getHeadMasterList(String userId)  	List<UserVO>
+
+本小组考核对象			7	getPositionUserList(String userId)  	List<UserVO>
+
+二级部门			8	getDeptLeaderS(String deptId)  		UserVO
+
+key  100311-100318
+
+
+
+
+提供的方法
+  1. 获取学校领导                          getLeaderList()    List<UserVO>   ------------------------ select * from TB_USER where USERCHARACTER='100211'
+  2. 获取二级部门领导（指定二级部门id）    getDeptLeader(String deptId)    List<UserVO>  ------select * from TB_USER where deptid='100002' and (USERCHARACTER='100212' or USERCHARACTER='100213' or USERCHARACTER='100214' or USERCHARACTER='100215')
+  3. 获取所在二级部门领导                  getDeptLeaderByUser(String userId)  List<UserVO>
+  3. 获取所有二级部门领导		   getDeptLeader()  List<UserVO>
+  4. 获得除本人所在部门以外所有部门的领导  getOtherDeptLeader(String userId)  List<UserVO>
+  5. 获得所在部门的所有职工                getWorkmateList(String userId)  List<UserVO>
+  6. 获得教职工代表			   getDelegateList(String userId)  List<UserVO>	
+  7. 获得本人所在部门的所有班主任	   getHeadMasterList(String userId)  List<UserVO> 
+  8. 获得本人所在的小组的考核对象          getPositionUserList(String userId)  List<UserVO> 
+  9. 获得指定部门的正职领导                getDeptLeaderS(String deptId)  UserVO 

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<!--定义权限验证拦截器 -->
+			<interceptor name="myAuthorization"
+				class="com.gdcp.pas.permission.AuthorityInterceptor">
+			</interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myAuthorization"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">login.jsp</result>
+		</global-results>
+
+		<action name="login_*" class="com.gdcp.pas.login.action.LoginAction"
+			method="{1}">
+			<result name="success">index.jsp</result>
+			<result name="failed">login.jsp  </result>
+		</action>
+
+		<action name="role_*" class="com.gdcp.pas.manage.action.RoleAction"
+			method="{1}">
+			<result type="chain" name="addRole_success">role_queryPage</result>
+			<result type="chain" name="deleteRole_success">role_queryPage</result>
+			<result name="insert_failed">manage/roleAdd.jsp </result>
+			<result name="role_Update">manage/RoleUpdate.jsp</result>
+			<result type="redirectAction" name="Update_success">role_queryPage</result>
+			<result name="queryPage_success">manage/RoleList.jsp </result>
+			<result name="deleteRole_failed" type="redirect">manage/RoleError.jsp
+			</result>
+			<result name="addRole_failed" type="redirect">manage/RoleError.jsp
+			</result>
+			<result name="Delete_List_success" type="redirectAction">role_queryPage
+			</result>
+			<result name="Delete_List_failed" type="redirect">manage/RoleError.jsp
+			</result>
+		</action>
+
+		<action name="userlevel_*" class="com.gdcp.pas.manage.action.UserlevelAction"
+			method="{1}">
+			<result name="Userlevel_qurery_success" type="redirect">manage/UserLevelList.jsp
+			</result>
+			<result name="Userlevel_delete_success" type="redirectAction">userlevel_qurery
+			</result>
+			<result name="Delete_userlevel_failed" type="redirect">manage/UserLevelError.jsp
+			</result>
+			<result name="Userlevel_Add_success" type="redirectAction">userlevel_qurery
+			</result>
+			<result name="Userlevel_Add_failed" type="redirect">manage/UserLevelError.jsp
+			</result>
+			<result name="Userlevel_Update_success" type="redirect">manage/UserLevelUpdate.jsp
+			</result>
+			<result name="Update_success" type="redirectAction">userlevel_qurery</result>
+			<result name="Delete_List_success" type="redirectAction">userlevel_qurery
+			</result>
+			<result name="Delete_List_failed" type="redirect">manage/UserLevelError.jsp
+			</result>
+		</action>
+
+
+		<action name="dept_*" class="com.gdcp.pas.manage.action.DeptAction"
+			method="{1}">
+			<result name="query_success">manage/DeptList.jsp
+			</result>
+			<result name="delete_success" type="redirectAction">dept_query</result>
+			<result name="insert_success" type="redirectAction">dept_query</result>
+			<result name="get_update_success" type="redirect">manage/DeptUpdate.jsp
+			</result>
+			<result name="update_success" type="redirectAction">dept_query</result>
+			<result name="delete_batch_success" type="redirectAction">dept_query</result>
+		</action>
+
+		<action name="user_*" class="com.gdcp.pas.manage.action.UserAction"
+			method="{1}">
+
+			<result name="query_success">manage/UserList.jsp</result>
+			<result name="queryUsers_success">manage/UserList.jsp</result>
+			<result name="queryById_success">manage/UserUpdate.jsp</result>
+			<result name="queryLikeName_success">manage/UserList.jsp</result>
+			<result name="queryAddInfo_success">manage/UserAdd.jsp</result>
+			<result name="addUser_success" type="redirectAction">user_query.action</result>
+			<result name="delUser_success" type="redirectAction">user_query.action</result>
+			<result name="delUsers_success" type="redirectAction">user_query.action
+			</result>
+			<result name="updateUser_success" type="redirectAction">user_query.action
+			</result>
+		</action>
+
+
+		<action name="scoreResult_*" class="com.gdcp.pas.manage.action.ScoreResultAction"
+			method="{1}">
+			<result name="queryPage_success">manage/ScoreResultList.jsp</result>
+			<result name="delete_success" type="redirectAction">scoreResult_queryPage
+			</result>
+			<result name="query_success">manage/ScoreResultList.jsp</result>
+			<result name="query_deptSuccess">manage/ScoreResultAdd.jsp</result>
+			<result name="insert_success" type="redirectAction">scoreResult_queryPage
+			</result>
+			<result name="getBatchAddMessage_success">manage/ScoreResultBatchAdd.jsp</result>
+		</action>
+
+
+
+		<!-- 以下是关于评分考核的action -->
+		<action name="NotEvaluateRule_*" class="com.gdcp.pas.score.action.NotEvaluateRuleAction"
+			method="{1}">
+			<result name="getRuleList_success">score/ScoreResult3_1List.jsp</result>
+			<result name="getScoreResultAndSecondIndex_success">score/ScoreResult3_1_1List.jsp</result>
+			<result name="SaveScoreResult_success" type="redirectAction">NotEvaluateRule_getRuleList.action
+			</result>
+		</action>
+		<action name="EvaluatedRule_*" class="com.gdcp.pas.score.action.EvaluatedRuleAction"
+			method="{1}">
+			<result name="getRuleList_success">score/ScoreResult3_2List.jsp</result>
+			<result name="getScoreResultAndSecondIndex_success">score/ScoreResult3_2_1List.jsp</result>
+		</action>
+		<action name="AllEvaluatedRule_*" class="com.gdcp.pas.score.action.AllEvaluatedRuleAction"
+			method="{1}">
+			<result name="getRuleList_success">score/ScoreResult3_3List.jsp</result>
+			<result name="getScoreResultAndSecondIndex_success">score/ScoreResult3_3_1List.jsp</result>
+		</action>
+
+
+		<!-- 以下是关于评分规则的action -->
+		<action name="scorerule_*"
+			class="com.gdcp.pas.score.action.ScoreRuleAndDetailAction" method="{1}">
+			<result name="showTableLV2_success">score/scoreRuleLV2Table.jsp</result>
+			<result name="showTableLV3_success">score/scoreRuleLV3Table.jsp</result>
+
+			<result name="showAssessTableLV2_success">score/scoreRuleLV2Table.jsp</result>
+
+			<result name="table_failed">score/ScoreResult_failed.jsp</result>
+		</action>
+
+		<action name="scoreresult_*"
+			class="com.gdcp.pas.score.action.ScoreResultAndDetailAction" method="{1}">
+			<result name="readBegin_success">score/ScoreResult3_1List.jsp</result>
+			<result name="readSaveAndCommit_success">score/ScoreResult3_2List.jsp</result>
+			<result name="readAll_success">score/ScoreResult3_3List.jsp</result>
+			<result name="readCommitOrNot_success">score/AssessDetailList.jsp</result>
+			<result name="new_save_success" type="redirectAction">scoreresult_read</result>
+			<result name="new_commit_success" type="redirectAction">scoreresult_read
+			</result>
+			<result name="save_success" type="redirectAction">scoreresult_read?readStatus=1
+			</result>
+			<result name="commit_success" type="redirectAction">scoreresult_read?readStatus=1
+			</result>
+			<result name="createScoreResult_success" type="redirectAction">scoreResult_getBatchAddMessage.action
+			</result>
+			<result name="read_failed" type="redirect">ScoreResult_failed.jsp
+			</result>
+			<result name="saveAndcommit_failed" type="redirect">ScoreResult_failed.jsp
+			</result>
+
+		</action>
+		<!-- 以下是关于考核查询的action -->
+		<action name="assessQuery_*" class="com.gdcp.pas.score.action.AssessQueryAction"
+			method="{1}">
+			<result name="queryPage_success">manage/AssessQueryList.jsp</result>
+			<result name="query_success">manage/AssessQueryList.jsp</result>
+		</action>
+
+
+		<!-- 以下是关于平均、加权分数 -->
+		<action name="averageScore_*" class="com.gdcp.pas.score.action.AverageScoreAction"
+			method="{1}">
+			<result name="calculate_sccsee" type="redirectAction">assessQuery_queryPage.action
+			</result>
+		</action>
+
+		<action name="readexcel_*" class="com.gdcp.pas.manage.action.ReadExcelAction"
+			method="{1}">
+		</action>
+
+		<action name="show_*" class="com.gdcp.pas.manage.action.ShowResultAction"
+			method="{1}">
+			<result name="query_success">score/ShowScoreResult.jsp
+			</result>
+			<!-- <result name="look_success" >score/ShowScoreResult.jsp</result> -->
+
+		</action>
+		<!--教学部门定量分action -->
+		<action name="DeptScoreQuantitation_*"
+			class="com.gdcp.pas.score.action.DeptScoreQuantitationActoin" method="{1}">
+			<result name="query_success">score/ScoreResult_DetpQuantitation.jsp</result>
+			<result name="saveScore_success" type="redirectAction">DeptScoreQuantitation_query
+			</result>
+		</action>
+
+		<action name="addAndSub_*" class="com.gdcp.pas.manage.action.AddAndSubAction"
+			method="{1}">
+			<result name="queryPage_success">manage/AddAndSubList.jsp
+			</result>
+			<result name="insert_success" type="redirectAction">addAndSub_queryPage
+			</result>
+			<result name="delete_success" type="redirectAction">addAndSub_queryPage
+			</result>
+			<result name="query_success">manage/AddAndSubList.jsp</result>
+			<result name="queryTo_success">manage/AddAndSubUpdate.jsp</result>
+			<result name="update_success" type="redirectAction">addAndSub_queryPage
+			</result>
+			<result name="insertTo_seccess">manage/AddAndSubAdd.jsp</result>
+		</action>
+
+	</package>
+</struts>

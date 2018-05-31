@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="images/blue/css.css" rel="stylesheet" type="text/css" id="showdialogcss" />
+<script src="js/jquery.js"></script>
+<script src="js/dialog.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$('#diagx').ShowDialog({
+					Width:"500",
+					Height:"300",
+					Title:"模式对话框",
+					skin:"blue",
+					FrameURL:"http://www.baidu.com",
+					ContentFlag:"0",
+					Contents:"<div>测试数据</div>"
+					});
+});
+</script>
+<title>模式对话框</title>
+</head>
+<body>
+<div id="diagx">单击我--模式对话框</div>
+</body>
+</html>

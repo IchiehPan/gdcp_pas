@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 以下三个地方要修改 FunctionId 为功能Id ActionName 为Action名 MethidName 为该Action下的方法名 -->
+<root>
+	<!-- 登陆与修改密码 -->
+	<function functionid="100">
+
+		<action actionName="login">
+			<method>login</method>
+		</action>
+
+		<action actionName="user">
+			<method>updatePassword</method>
+		</action>
+
+	</function>
+
+	<!-- 用户管理 -->
+	<function functionid="101">
+
+		<action actionName="user">
+			<method>query</method>
+			<method>queryById</method>
+			<method>updatePassword</method>
+			<method>queryUsers</method>
+			<method>queryAddInfo</method>
+			<method>addURFunction</method>
+			<method>addUser</method>
+			<method>delUser</method>
+			<method>delUsers</method>
+			<method>queryLikeName</method>
+			<method>updateUser</method>
+		</action>
+
+	</function>
+
+
+	<!-- 角色管理 -->
+	<function functionid="102">
+
+		<action actionName="role">
+			<method>Check</method>
+			<method>delRoleList</method>
+			<method>trueupdate</method>
+			<method>updataRole</method>
+			<method>query</method>
+			<method>addRole</method>
+			<method>deleteRole</method>
+			<method>queryPage</method>
+		</action>
+
+	</function>
+
+
+	<!-- 加减分管理 -->
+	<function functionid="103">
+
+		<action actionName="addAndSub">
+			<method>queryPage</method>
+			<method>AddOrSub</method>
+			<method>deleteScore</method>
+			<method>queryByObjectId</method>
+			<method>queryByObjectIdTo</method>
+			<method>AddOrSubUpdate</method>
+			<method>AddAndSubTo</method>
+		</action>
+
+	</function>
+
+	<!-- 部门管理 -->
+	<function functionid="104">
+
+		<action actionName="dept">
+			<method>query</method>
+			<method>insertRec</method>
+			<method>deleteRec</method>
+			<method>deleteBatchRec</method>
+			<method>update</method>
+			<method>updateRec</method>
+			<method>checkName</method>
+		</action>
+
+	</function>
+
+
+
+	<!-- 评价关系管理 -->
+	<function functionid="105">
+
+		<action actionName="scoreResult">
+			<method>queryPage</method>
+			<method>deleteRec</method>
+			<method>query</method>
+			<method>queryDept</method>
+			<method>queryName</method>
+			<method>insertRec</method>
+			<method>getBatchAddMessage</method>
+		</action>
+
+	</function>
+
+	<!-- 考核查询 -->
+	<function functionid="201">
+
+		<action actionName="scoreresult">
+			<method>readCommitOrNot</method>
+			4
+		</action>
+		<action actionName="assessQuery">
+			<method>queryPage</method>
+			<method>queryNotSubmitScoreUser</method>
+		</action>
+
+		<action actionName="averageScore">
+			<method>outputWeightScore</method>
+			<method>outputCommitRate</method>
+			<method>calculateScore</method>
+		</action>
+
+	</function>
+
+
+	<!-- 考核统计 -->
+	<function functionid="202">
+
+		<action actionName="show">
+			<method>queryResule</method>
+			<method>Look</method>
+		</action>
+
+	</function>
+
+	<!-- 党委 -->
+	<function functionid="203">
+
+		<action actionName="averageScore">
+			<method>outputMiddleScore</method>
+		</action>
+
+	</function>
+
+	<!-- 未考核 -->
+	<function functionid="301">
+		<action actionName="NotEvaluateRule">
+			<method>getRuleList</method>
+			<method>getScoreResultAndSecondIndex</method>
+			<method>SaveScoreResult</method>
+		</action>
+		<action actionName="scoreresult">
+			<method>read</method>
+			<method>scoreResultBatchAdd</method>
+			<method>saveAndcommit</method>
+		</action>
+		<action actionName="scorerule">
+			<method>showDetailTable</method>
+		</action>
+	</function>
+
+	<!-- 已考核 -->
+	<function functionid="302">
+		<action actionName="EvaluatedRule">
+			<method>getRuleList</method>
+			<method>getScoreResultAndSecondIndex</method>
+		</action>
+		<action actionName="scoreresult">
+			<method>read</method>
+			<method>scoreResultBatchAdd</method>
+			<method>saveAndcommit</method>
+		</action>
+
+		<action actionName="scorerule">
+			<method>showDetailTable</method>
+		</action>
+
+	</function>
+
+	<!-- 我的考核 -->
+	<function functionid="303">
+		<action actionName="AllEvaluatedRule">
+			<method>getRuleList</method>
+			<method>getScoreResultAndSecondIndex</method>
+		</action>
+		<action actionName="scoreresult">
+			<method>readAll</method>
+			<method>outputCsv</method>
+			<method>scoreResultBatchAdd</method>
+			<method>saveAndcommit</method>
+		</action>
+
+		<action actionName="scorerule">
+			<method>showDetailTable</method>
+		</action>
+	</function>
+	<!-- 对部门的定量考核分 -->
+	<function functionid="304">
+		<action actionName="DeptScoreQuantitation">
+			<method>query</method>
+			<method>saveScore</method>
+		</action>
+	</function>
+</root>
